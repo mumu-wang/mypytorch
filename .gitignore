@@ -1,0 +1,4 @@
+/.idea/*
+/src/dataset
+/src/cifar10
+/src/logs
