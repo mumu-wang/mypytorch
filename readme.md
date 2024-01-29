@@ -6,6 +6,8 @@ https://pytorch.org/get-started/locally/
 pip3 install torch torchvision torchaudio tensorboard opencv-python packaging six
 ```
 
+学习视频：https://www.bilibili.com/video/BV1hE411t7RN/
+
 
 
 #### 1. pytorch加载数据
@@ -34,6 +36,8 @@ import cv2
 ##### 2.2 tensorboard可视化
 
 可以添加和显示**图片**和**标量**数据
+
+add_image 添加单张图片, add_images 添加多张图片
 
 ```
 from torch.utils.tensorboard import SummaryWriter
@@ -89,7 +93,7 @@ tensor类型里面包含 backward, data, auto_grad等反向神经网络常用的
 
 **Compose**: *Composes several transforms together. This transform does not support torchscript*
 
-##### 3.4 V1,V2版本
+##### 3.4 V1,V2版本 TODO 区别
 
 Torchvision supports common computer vision transformations in the `torchvision.transforms` and `torchvision.transforms.v2` modules. Transforms can be used to transform or augment data for training or inference of different tasks (image classification, detection, segmentation, video classification).
 
@@ -132,7 +136,13 @@ writer.close()
 
 torch.utils.data.DataLoader https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader
 
+DataLoader(dataset=test_data, batch_size=64, shuffle=True, num_workers=0, drop_last=False)
 
+输出： images, labels
+
+
+
+#### 6. nn.Module使用
 
 
 
