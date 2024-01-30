@@ -144,8 +144,7 @@ DataLoader(dataset=test_data, batch_size=64, shuffle=True, num_workers=0, drop_l
 
 #### 6. nn.Module使用
 1. 怎样计算卷积：矩阵对应位置相乘最后相加
-2. torch.reshape(input,(batch_size,channel,h,w))可以修改input形态
-
+2. **torch.reshape**(*input*, *shape*) 可以修改input tensor的形态
 
 
 
