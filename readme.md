@@ -93,7 +93,7 @@ tensor类型里面包含 backward, data, auto_grad等反向神经网络常用的
 
 **Compose**: *Composes several transforms together. This transform does not support torchscript*
 
-##### 3.4 V1,V2版本 TODO 区别
+##### 3.4 V1, V2版本 TODO 区别
 
 Torchvision supports common computer vision transformations in the `torchvision.transforms` and `torchvision.transforms.v2` modules. Transforms can be used to transform or augment data for training or inference of different tasks (image classification, detection, segmentation, video classification).
 
@@ -142,18 +142,72 @@ DataLoader(dataset=test_data, batch_size=64, shuffle=True, num_workers=0, drop_l
 
 
 
-#### 6. nn.Module使用
-1. 怎样计算卷积：矩阵对应位置相乘最后相加, https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+#### 6. nn.Module和conv使用
+1.怎样计算卷积：矩阵对应位置相乘最后相加, https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
 
-	| <img src="./assets/image-20240131094857047.png" alt="image-20240131094857047" style="zoom:50%;" /> |
-	| ------------------------------------------------------------ |
-	| <img src="./assets/no_padding_no_strides.gif" alt="no_padding_no_strides" style="zoom:50%;" /> |
+| <img src="./assets/image-20240131094857047.png" alt="image-20240131094857047" style="zoom:50%;" /> |
+| ------------------------------------------------------------ |
+| Example: Blue maps are inputs, and cyan maps are outputs. padding=0, strides=1. |
+| <img src="./assets/no_padding_no_strides.gif" alt="no_padding_no_strides" style="zoom:50%;" /> |
 
-2. **torch.reshape**(*input*, *shape*) 可以修改input tensor的形态
+2.常用参数
 
-3. 自定义模型需要继承 **torch.nn.Module**, 自己实现 init, forward 方法
+- **in_channels** ([*int*](https://docs.python.org/3/library/functions.html#int)) – Number of channels in the input image
+- **out_channels** ([*int*](https://docs.python.org/3/library/functions.html#int)) – Number of channels produced by the convolution
+- **kernel_size** ([*int*](https://docs.python.org/3/library/functions.html#int) *or* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)) – Size of the convolving kernel
+- **stride** ([*int*](https://docs.python.org/3/library/functions.html#int) *or* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple)*,* *optional*) – Stride of the convolution. Default: 1
+- **padding** ([*int*](https://docs.python.org/3/library/functions.html#int)*,* [*tuple*](https://docs.python.org/3/library/stdtypes.html#tuple) *or* [*str*](https://docs.python.org/3/library/stdtypes.html#str)*,* *optional*) – Padding added to all four sides of the input. Default: 0
+- **bias** ([*bool*](https://docs.python.org/3/library/functions.html#bool)*,* *optional*) – If `True`, adds a learnable bias to the output. Default: `True`
+
+3.**torch.reshape**(*input*, *shape*) 可以修改input tensor的形态
+
+4.自定义模型需要继承 **torch.nn.Module**, 自己实现 init, forward 方法
+
+5.使用方法
+
+```
+conv = nn.Conv2d(in_channels=3, out_channels=3, kernel_size=5, padding=2, device=device)
+conv(image_tensor)
+```
 
 
 
+#### 7. 池化使用
 
+1.池化层定义
+
+| <img src="./assets/image-20240131153805741.png" alt="image-20240131153805741" style="zoom:50%;" /> |
+| ------------------------------------------------------------ |
+
+2.常用参数
+
+- **kernel_size** ([*Union*](https://docs.python.org/3/library/typing.html#typing.Union)*[*[*int*](https://docs.python.org/3/library/functions.html#int)*,* [*Tuple*](https://docs.python.org/3/library/typing.html#typing.Tuple)*[*[*int*](https://docs.python.org/3/library/functions.html#int)*,* [*int*](https://docs.python.org/3/library/functions.html#int)*]]*) – the size of the window to take a max over
+- **stride** ([*Union*](https://docs.python.org/3/library/typing.html#typing.Union)*[*[*int*](https://docs.python.org/3/library/functions.html#int)*,* [*Tuple*](https://docs.python.org/3/library/typing.html#typing.Tuple)*[*[*int*](https://docs.python.org/3/library/functions.html#int)*,* [*int*](https://docs.python.org/3/library/functions.html#int)*]]*) – the stride of the window. Default value is `kernel_size`
+- **padding** ([*Union*](https://docs.python.org/3/library/typing.html#typing.Union)*[*[*int*](https://docs.python.org/3/library/functions.html#int)*,* [*Tuple*](https://docs.python.org/3/library/typing.html#typing.Tuple)*[*[*int*](https://docs.python.org/3/library/functions.html#int)*,* [*int*](https://docs.python.org/3/library/functions.html#int)*]]*) – Implicit negative infinity padding to be added on both sides
+
+- **ceil_mode** ([*bool*](https://docs.python.org/3/library/functions.html#bool)) – when True, will use ceil instead of floor to compute the **output shape**. 当设置为True时，遇到边界时，池化层结果会保留所有结果，如果为False时，会舍弃不完整图形计算的结果
+
+3.使用方法
+
+```
+max_pooling = nn.MaxPool2d(kernel_size=10, ceil_mode=True)
+max_pooling(image_tensor)
+```
+
+
+
+#### 8.非线性变换
+
+1.常用变换
+
+[`nn.ReLU`](https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html#torch.nn.ReLU)
+
+[`nn.Sigmoid`](https://pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html#torch.nn.Sigmoid)
+
+2.使用方法
+
+```
+non_linear = Sigmoid()
+non_linear(image_tensor)
+```
 

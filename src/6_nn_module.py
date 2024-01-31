@@ -34,7 +34,7 @@ print(conv_result)
 class Model(nn.Module):
     def __init__(self):
         super().__init__()
-        self.conv = nn.Conv2d(3, 3, 5, padding=2, device=device)
+        self.conv = nn.Conv2d(in_channels=3, out_channels=3, kernel_size=5, padding=2, device=device)
 
     def forward(self, x):
         return self.conv(x)
@@ -43,7 +43,7 @@ class Model(nn.Module):
 start_time = time.time()
 
 image_path = './resources/image/view.jpg'
-image_tensor = v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)])(Image.open(image_path))\
+image_tensor = v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)])(Image.open(image_path)) \
     .to(torch.device(device=device))
 image_conv = Model()(image_tensor)
 
