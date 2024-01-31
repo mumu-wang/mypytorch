@@ -196,7 +196,7 @@ max_pooling(image_tensor)
 
 
 
-#### 8.非线性变换
+#### 8. 非线性变换
 
 1.常用变换
 
@@ -210,4 +210,8 @@ max_pooling(image_tensor)
 non_linear = Sigmoid()
 non_linear(image_tensor)
 ```
+
+#### 8. 线性操作
+1.作用于全连接网络
+2.torch.flatten()使用，类似torch.reshape()子集
 
