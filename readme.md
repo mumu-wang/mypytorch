@@ -211,7 +211,7 @@ non_linear = Sigmoid()
 non_linear(image_tensor)
 ```
 
-#### 8. 线性操作
+#### 9. 线性操作
 1.作用于全连接网络
 
 2.使用方法
