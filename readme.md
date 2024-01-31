@@ -143,8 +143,15 @@ DataLoader(dataset=test_data, batch_size=64, shuffle=True, num_workers=0, drop_l
 
 
 #### 6. nn.Module使用
-1. 怎样计算卷积：矩阵对应位置相乘最后相加
+1. 怎样计算卷积：矩阵对应位置相乘最后相加, https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
+
+	| <img src="./assets/image-20240131094857047.png" alt="image-20240131094857047" style="zoom:50%;" /> |
+	| ------------------------------------------------------------ |
+	| <img src="./assets/no_padding_no_strides.gif" alt="no_padding_no_strides" style="zoom:50%;" /> |
+
 2. **torch.reshape**(*input*, *shape*) 可以修改input tensor的形态
+
+3. 自定义模型需要继承 **torch.nn.Module**, 自己实现 init, forward 方法
 
 
 
