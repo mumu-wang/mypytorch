@@ -312,6 +312,13 @@ for input, target in dataset:
 2. TODO 修改vgg模型 model.add_model, model.classifier.add_model, model.classifier[x]
 
 
+#### 14. 网络模型的保持和读取
+两种方式
+torch.save(model)
+torch.save(model.state_dict())
+
+torch.load()
+
 
 
 
