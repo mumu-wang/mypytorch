@@ -239,7 +239,20 @@ model structure
 
 | <img src="./assets/image-20240201105029162.png" alt="image-20240201105029162" style="zoom:50%;" /> |
 | ------------------------------------------------------------ |
-| <img src="./assets/image-20240201105631499.png" alt="image-20240201105631499" style="zoom: 33%;" /> |
+
+```
+self.model = Sequential(OrderedDict([
+            ('conv1', Conv2d(in_channels=3, out_channels=32, kernel_size=5, padding=2)),
+            ('pool1', MaxPool2d(kernel_size=2)),
+            ('conv2', Conv2d(in_channels=32, out_channels=32, kernel_size=5, padding=2)),
+            ('pool2', MaxPool2d(kernel_size=2)),
+            ('conv3', Conv2d(in_channels=32, out_channels=64, kernel_size=5, padding=2)),
+            ('pool3', MaxPool2d(kernel_size=2)),
+            ('flatten', Flatten()),
+            ('full_connect1', Linear(1024, 128)),
+            ('full_connect2', Linear(128, 10))
+        ]))
+```
 
 使用nn.Sequential() 构建网络模型
 
