@@ -307,6 +307,11 @@ for input, target in dataset:
 ```
 
 
+#### 13. 使用和修改现有模型
+1. torchvision.models.vgg16
+2. TODO 修改vgg模型 model.add_model, model.classifier.add_model, model.classifier[x]
+
+
 
 
 
