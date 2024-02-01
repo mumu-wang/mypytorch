@@ -211,7 +211,10 @@ non_linear = Sigmoid()
 non_linear(image_tensor)
 ```
 
+
+
 #### 9. 线性操作
+
 1.作用于全连接网络
 
 2.使用方法
@@ -222,5 +225,29 @@ input = torch.randn(128, 20)
 output = m(input)
 ```
 
-3.torch.flatten()使用，类似torch.reshape()子集
+3.torch.flatten()可以将tensor降维，类似torch.reshape()子集
+
+
+
+#### 10. 神经网络搭建实战 # TODO
+
+输入：CIFAR10 数据
+
+输出： 分类结果
+
+model structure
+
+| <img src="./assets/image-20240201105029162.png" alt="image-20240201105029162" style="zoom:50%;" /> |
+| ------------------------------------------------------------ |
+| <img src="./assets/image-20240201105631499.png" alt="image-20240201105631499" style="zoom: 33%;" /> |
+
+使用nn.Sequential() 构建网络模型
+
+nn.Flatten()可以将tensor变量降维。Flattens a contiguous range of dims into a tensor.
+
+tensordboard 通过 add_graph() 可以可视化网络模型，对学习很有帮助
+
+
+
+#### 11. 损失函数与反向传播
 

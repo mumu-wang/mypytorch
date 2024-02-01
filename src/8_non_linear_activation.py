@@ -9,7 +9,6 @@
 import torch
 from torch.nn import Module
 from torch.nn import Sigmoid
-from torch.nn import ReLU
 from torch.utils.tensorboard import SummaryWriter
 from torchvision.transforms import v2
 from PIL import Image
@@ -21,10 +20,10 @@ class Model(Module):
     def __init__(self):
         super().__init__()
         self.non_linear = Sigmoid()
-        # self.non_linear = ReLU()
 
     def forward(self, x):
         return self.non_linear(x)
+
 
 image_path = './resources/image/view.jpg'
 image_original = v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)])(Image.open(image_path)) \
