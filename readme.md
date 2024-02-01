@@ -266,3 +266,47 @@ tensordboard 通过 add_graph() 可以可视化网络模型，对学习很有帮
 
 #### 11. 损失函数与反向传播
 
+1.常见损失函数
+
+[`nn.L1Loss`](https://pytorch.org/docs/stable/generated/torch.nn.L1Loss.html#torch.nn.L1Loss)  Creates a criterion that measures the mean absolute error (MAE) 
+
+[`nn.MSELoss`](https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html#torch.nn.MSELoss)  Creates a criterion that measures the mean squared error
+
+[`nn.CrossEntropyLoss`](https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss)  
+
+2.作用
+
+计算预测值和目标的差异，调用backward方法，可以计算模型中每个权重的梯度
+
+3.使用方法
+
+```
+# Example of target with class indices
+loss = nn.CrossEntropyLoss()
+input = torch.randn(3, 5, requires_grad=True)
+target = torch.empty(3, dtype=torch.long).random_(5)
+output = loss(input, target)
+output.backward() #执行此方法会计算模型权重的梯度
+```
+
+
+
+#### 12. 优化器
+
+1.在torch.optim包中
+
+2.使用方法
+
+```
+for input, target in dataset:
+    optimizer.zero_grad() #每一轮将梯度值清零
+    output = model(input) # 模型预测
+    loss = loss_fn(output, target) #计算损失
+    loss.backward() #反向传播，计算梯度
+    optimizer.step() #优化器，根据梯度更新权重
+```
+
+
+
+
+
