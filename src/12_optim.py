@@ -44,7 +44,7 @@ data_loader = DataLoader(dataset=dataset, batch_size=64)
 
 my_model = Model()
 loss_cross = nn.CrossEntropyLoss()
-optim = op.SGD(my_model.parameters(), lr=0.01)
+optim = op.SGD(my_model.parameters(), lr=0.05)
 
 for epoch in range(1, 20):
     epoch_loss = 0
@@ -57,4 +57,3 @@ for epoch in range(1, 20):
         optim.step()
         epoch_loss += result_loss
     print(f'epoch {epoch}: loss is {epoch_loss}')
-
