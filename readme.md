@@ -308,7 +308,7 @@ output.backward() #执行此方法会计算模型权重的梯度
 
 
 
-## 4.7. 优化器(torch.optim.SGD..)
+## 4.7 优化器(torch.optim.SGD..)
 
 优化器基根据损失函数的梯度，更新网络中的权重。
 
@@ -377,5 +377,10 @@ torch.save(model.state_dict())
 
 torch.load()
 
+# 5. 模型训练
 
-
+1. cifar10数据集，自定义模型
+2. 输出每轮训练的结果（训练集，测试集）
+3. 使用tensorboard展示训练结果
+4. 保存每轮训练的结果
+5. model.train(), model.eval()作用
