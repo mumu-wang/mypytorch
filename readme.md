@@ -18,21 +18,21 @@ Dataset: 提供一种方式获取**数据**和**标签**
 
 - 抽象类，继承from **torch.utils.data** import Dataset 可以定义自己的数据集
 - torchvision.datasets.xxx 提供常用的图像数据集，CIFAR10, ImageNet, CoCo, etc.
-- ```
+ ```
 	image_2_tensor = v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)])
 	dataset = torchvision.datasets.CIFAR10(root='cifar10', train=False, transform=image_2_tensor, download=True)
-	```
+ ```
 
 Dataloader: 按指定方式加载数据集
 
 - from **torch.utils.data** import DataLoader
 
-- ```
+ ```
 	data_loader = DataLoader(dataset=dataset, batch_size=64)
 	image, target = next(iter(data_loader))
-	```
+ ```
 
-	
+​	
 
 # 2. torchvision.transforms
 
@@ -377,10 +377,34 @@ torch.save(model.state_dict())
 
 torch.load()
 
+
+
 # 5. 模型训练
 
 1. cifar10数据集，自定义模型
+
 2. 输出每轮训练的结果（训练集，测试集）
+
 3. 使用tensorboard展示训练结果
+
 4. 保存每轮训练的结果
+
 5. model.train(), model.eval()作用
+
+	
+
+# 6. GPU使用
+
+1.网络模型， 数据（输入，标签），损失函数 ，调用.cuda(), to(device='mps') //其中网络模型和损失函数可以直接调用to()，不用再赋值给自己
+
+2.使用Google colab 进行训练，设置中可以选择GPU
+
+
+
+# 7.模型应用
+
+加载已经训练好的模型，验证模型。test.py
+
+训练好的模型加载时 torch.load('model.pt', map_location=torch.device('cpu'))， 如果在gpu训练想在cpu上使用，需要指定参数map_location
+
+预测结果，调用.argmax(1)可以得到最大概率结果的位置
