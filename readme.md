@@ -389,7 +389,9 @@ torch.load()
 
 4. 保存每轮训练的结果
 
-5. model.train(), model.eval()作用
+5. model.train() —— This has any effect only on certain modules. See documentations of particular modules for details of their behaviors in training/evaluation mode, if they are affected, e.g. Dropout, BatchNorm, etc.
+   
+7. model.eval() —— This has any effect only on certain modules. See documentations of particular modules for details of their behaviors in training/evaluation mode, if they are affected, e.g. Dropout, BatchNorm, etc.
 
 	
 
