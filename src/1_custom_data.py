@@ -9,7 +9,7 @@
 from torch.utils.data import Dataset
 import cv2
 import os
-
+import torch
 
 class MyData(Dataset):
 
@@ -38,3 +38,6 @@ ants_dataset = MyData(root_dir, ants_label_dir)
 bees_dataset = MyData(root_dir, bees_label_dir)
 print(ants_dataset[0])
 
+print(torch.__version__)
+tensor = torch.Tensor([1.]).to(device='mps')
+print(tensor)

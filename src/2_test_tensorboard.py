@@ -21,3 +21,4 @@ writer.add_image('2_test_tensorboard', image, 1, dataformats='HWC')
 for i in range(100):
     writer.add_scalar('y=x', i, i)
 writer.close()
+
